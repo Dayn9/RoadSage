@@ -14,8 +14,9 @@ public class Car : MonoBehaviour {
     private bool grounded;
     private bool jump = false;
 
-    private float velocity = 0; 
+    private float velocity = 0;
 
+    private bool pause = true;
 
     private void Awake()
     {
@@ -25,40 +26,61 @@ public class Car : MonoBehaviour {
 
     private void Update()
     {
-        if(grounded && Input.GetKey(KeyCode.Space))
+        if(grounded && Input.GetKey(KeyCode.Space) && !pause)
         {
             jump = true;
         }
+    }
+
+    public void Jump()
+    {
+        if (grounded && !pause)
+        {
+            jump = true;
+        }
+    }
+
+    public void Begin()
+    {
+        pause = false;
+    }
+
+    public void TogglePause()
+    {
+        pause = !pause;
     }
 
 
     // Update is called once per frame
     void FixedUpdate () {
 
-        velocity -= gravityForce * Time.deltaTime;
-
-        int numCollisions = rb2D.Cast(Vector3.down, hits, velocity);
-        float distance = Mathf.Abs(velocity);
-        for(int i = 0; i <numCollisions; i++)
+        if (!pause)
         {
-            //collide with the closest
-            if (hits[i].distance < distance)
+            velocity -= gravityForce * Time.deltaTime;
+
+            int numCollisions = rb2D.Cast(Vector3.down, hits, velocity);
+            float distance = Mathf.Abs(velocity);
+            for (int i = 0; i < numCollisions; i++)
             {
-                distance = hits[i].distance;
-                grounded = true;
-                velocity = 0;
-                transform.up = hits[i].normal;
+                //collide with the closest
+                if (hits[i].distance < distance)
+                {
+                    distance = hits[i].distance;
+                    grounded = true;
+                    velocity = 0;
+                    transform.up = hits[i].normal;
+                }
             }
+
+            if (jump && grounded)
+            {
+                velocity += jumpForce * Time.deltaTime;
+
+                jump = false;
+                grounded = false;
+            }
+
+            transform.position += Vector3.up * velocity;
         }
-
-		if(jump && grounded)
-        {
-            velocity += jumpForce * Time.deltaTime;
-
-            jump = false;
-            grounded = false;
-        }
-
-        transform.position += Vector3.up * velocity;
 	}
 }

@@ -9,20 +9,32 @@ public class Hills : MonoBehaviour {
 
     private bool created = false;
 
-
+    private static bool pause = true;
 	
-	// Update is called once per frame
-	void Update () {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+    public void TogglePause()
+    {
+        pause = !pause;
+    }
+    public void Begin()
+    {
+        pause = false;
+    }
 
-        if(!created && transform.position.x < 0)
+    // Update is called once per frame
+    void Update () {
+        if (!pause)
         {
-            Instantiate(this.gameObject, transform.position + Vector3.right * (width / 2), Quaternion.identity);
-            created = true;
-        }
-        else if(transform.position.x < -(width / 2))
-        {
-            Destroy(gameObject);
+            transform.position += Vector3.left * speed * Time.deltaTime;
+
+            if (!created && transform.position.x < 0)
+            {
+                Instantiate(this.gameObject, transform.position + Vector3.right * (width / 2), Quaternion.identity);
+                created = true;
+            }
+            else if (transform.position.x < -(width / 2))
+            {
+                Destroy(gameObject);
+            }
         }
 	}
 }
