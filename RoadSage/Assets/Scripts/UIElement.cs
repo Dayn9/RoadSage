@@ -10,7 +10,10 @@ public enum StartPos
 
 public class UIElement : MonoBehaviour {
 
-    private const float speed = 5;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private bool screenSizeOffset;
+    [SerializeField] private Vector2 offset;
+    [SerializeField] private StartPos startPos;
 
     private Image image;
 
@@ -19,11 +22,8 @@ public class UIElement : MonoBehaviour {
 
     private Vector2 center;
 
-    [SerializeField] private StartPos startPos;
-
     private void Awake()
     {
-        
         center = transform.localPosition;
         image = GetComponent<Image>();
         color = image.color;
@@ -31,16 +31,16 @@ public class UIElement : MonoBehaviour {
         switch (startPos)
         {
             case StartPos.right:
-                transform.localPosition += Screen.width * Vector3.right;
+                transform.localPosition += (screenSizeOffset ? Screen.width : offset.x) * Vector3.right;
                 break;
             case StartPos.left:
-                transform.localPosition += Screen.width * Vector3.left;
+                transform.localPosition += (screenSizeOffset ? Screen.width : offset.x) * Vector3.left;
                 break;
             case StartPos.top:
-                transform.localPosition += Screen.height * Vector3.up;
+                transform.localPosition += (screenSizeOffset ? Screen.height: offset.y) * Vector3.up;
                 break;
             case StartPos.bottom:
-                transform.localPosition += Screen.height * Vector3.down;
+                transform.localPosition += (screenSizeOffset ? Screen.height : offset.y) * Vector3.down;
                 break;
             case StartPos.center:
             default:
@@ -53,24 +53,24 @@ public class UIElement : MonoBehaviour {
     #region button calls
     public void Deactivate()
     {
-        image.enabled = false;
+        image.raycastTarget = false;
     }
 
     public void MoveRight()
     {
-        MoveTo(new Vector2(center.x + Screen.width, center.y));
+        MoveTo(new Vector2(center.x + (screenSizeOffset ? Screen.width : offset.x), center.y));
     }
     public void MoveLeft()
     {
-        MoveTo(new Vector2(center.x-Screen.width, center.y));
+        MoveTo(new Vector2(center.x- (screenSizeOffset ? Screen.width : offset.x), center.y));
     }
     public void MoveBottom()
     {
-        MoveTo(new Vector2(center.x, center.y - Screen.width));
+        MoveTo(new Vector2(center.x, center.y - (screenSizeOffset ? Screen.height : offset.y)));
     }
     public void MoveTop()
     {
-        MoveTo(new Vector2(center.x, center.y + Screen.width));
+        MoveTo(new Vector2(center.x, center.y + (screenSizeOffset ? Screen.height : offset.y)));
     }
     public void MoveCenter()
     {

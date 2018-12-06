@@ -18,23 +18,18 @@ public class Car : MonoBehaviour {
 
     private bool pause = true;
 
+    private Vector3 targetUp;
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
         hits = new RaycastHit2D[2];
+        targetUp = transform.up;
     }
 
     private void Update()
     {
-        if(grounded && Input.GetKey(KeyCode.Space) && !pause)
-        {
-            jump = true;
-        }
-    }
-
-    public void Jump()
-    {
-        if (grounded && !pause)
+        if(grounded && Input.GetMouseButton(0) && !pause)
         {
             jump = true;
         }
@@ -68,7 +63,7 @@ public class Car : MonoBehaviour {
                     distance = hits[i].distance;
                     grounded = true;
                     velocity = 0;
-                    transform.up = hits[i].normal;
+                    targetUp = hits[i].normal;
                 }
             }
 
@@ -81,6 +76,7 @@ public class Car : MonoBehaviour {
             }
 
             transform.position += Vector3.up * velocity;
+            transform.up = Vector3.Slerp(transform.up, targetUp, Time.deltaTime * 10);
         }
 	}
 }
