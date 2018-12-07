@@ -16,6 +16,7 @@ public class UIElement : MonoBehaviour {
     [SerializeField] private StartPos startPos;
 
     private Image image;
+    private Text text; 
 
     private Vector2 target;
     private Color color;
@@ -26,7 +27,15 @@ public class UIElement : MonoBehaviour {
     {
         center = transform.localPosition;
         image = GetComponent<Image>();
-        color = image.color;
+        text = GetComponent<Text>();
+        if(image != null)
+        {
+            color = image.color;
+        }
+        else if (text != null)
+        {
+            color = text.color;
+        }
 
         switch (startPos)
         {
@@ -53,9 +62,8 @@ public class UIElement : MonoBehaviour {
     #region button calls
     public void Deactivate()
     {
-        image.raycastTarget = false;
+        GetComponent<Button>().targetGraphic.raycastTarget = false;
     }
-
     public void MoveRight()
     {
         MoveTo(new Vector2(center.x + (screenSizeOffset ? Screen.width : offset.x), center.y));
@@ -105,7 +113,14 @@ public class UIElement : MonoBehaviour {
     private void Update()
     {
         transform.localPosition = Vector2.Lerp(transform.localPosition, target, Time.deltaTime * speed);
-        image.color = Color.Lerp(image.color, color, Time.deltaTime * speed);
+        if (image != null)
+        {
+            image.color = Color.Lerp(image.color, color, Time.deltaTime * speed);
+        }
+        else if (text != null)
+        {
+            text.color = Color.Lerp(text.color, color, Time.deltaTime * speed);
+        }
     }
 
 }
