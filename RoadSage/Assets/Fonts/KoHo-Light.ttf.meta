@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a36faf2265c19e248942ad25f452a2e3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoHo Light
+  fontNames:
+  - KoHo Light
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 370d7f5cf47e800468fbc07695d5ed67, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c541ea1edd0059f4a84d77ad5e02790a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoHo SemiBold
+  fontNames:
+  - KoHo SemiBold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1df4195153271b143b70ecd76f7a7094, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
