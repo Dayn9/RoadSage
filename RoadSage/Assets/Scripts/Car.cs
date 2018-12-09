@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Car : MonoBehaviour {
 
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityForce;
+    [SerializeField] private Text scoreOutput;
+    [SerializeField] private float scoreMultiplier;
 
     private Rigidbody2D rb2D;
 
@@ -20,6 +23,8 @@ public class Car : MonoBehaviour {
 
     private Vector3 targetUp;
 
+    private float score = 0; 
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -29,10 +34,17 @@ public class Car : MonoBehaviour {
 
     private void Update()
     {
-        if(grounded && Input.GetMouseButton(0) && !pause)
+        if (!pause)
         {
-            jump = true;
+            if (grounded && Input.GetMouseButton(0))
+            {
+                jump = true;
+            }
+
+            score += scoreMultiplier * Time.deltaTime;
+            scoreOutput.text = ((int)score).ToString();
         }
+       
     }
 
     public void Begin()
@@ -70,7 +82,7 @@ public class Car : MonoBehaviour {
             if (jump && grounded)
             {
                 velocity += jumpForce * Time.deltaTime;
-
+                score += 10;
                 jump = false;
                 grounded = false;
             }
