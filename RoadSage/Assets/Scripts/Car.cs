@@ -23,7 +23,7 @@ public class Car : MonoBehaviour {
 
     private Vector3 targetUp;
 
-    private float score = 0; 
+    public float score = 0; 
 
     private void Awake()
     {
@@ -55,6 +55,11 @@ public class Car : MonoBehaviour {
     public void TogglePause()
     {
         pause = !pause;
+    }
+
+    public void GameOver()
+    {
+        pause = true;
     }
 
 
@@ -91,4 +96,5 @@ public class Car : MonoBehaviour {
             transform.up = Vector3.Slerp(transform.up, targetUp, Time.deltaTime * 10);
         }
 	}
+
 }

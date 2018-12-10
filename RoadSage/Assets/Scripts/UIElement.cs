@@ -14,6 +14,7 @@ public class UIElement : MonoBehaviour {
     [SerializeField] private bool screenSizeOffset;
     [SerializeField] private Vector2 offset;
     [SerializeField] private StartPos startPos;
+    [SerializeField] private Color startColor = Color.white;
 
     private Image image;
     private Text text; 
@@ -30,10 +31,12 @@ public class UIElement : MonoBehaviour {
         text = GetComponent<Text>();
         if(image != null)
         {
+            image.color = startColor;
             color = image.color;
         }
         else if (text != null)
         {
+            text.color = startColor;
             color = text.color;
         }
 
@@ -55,7 +58,6 @@ public class UIElement : MonoBehaviour {
             default:
                 break;
         }
-
         target = transform.localPosition;
     }
 
