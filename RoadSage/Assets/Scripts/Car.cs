@@ -52,6 +52,12 @@ public class Car : MonoBehaviour {
         pause = false;
     }
 
+    public void Restart()
+    {
+        transform.position = new Vector3(-3.16f, 0, 0);
+    }
+
+
     public void TogglePause()
     {
         pause = !pause;

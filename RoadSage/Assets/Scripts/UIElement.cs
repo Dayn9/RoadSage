@@ -66,6 +66,11 @@ public class UIElement : MonoBehaviour {
     {
         GetComponent<Button>().targetGraphic.raycastTarget = false;
     }
+    public void Activate()
+    {
+        GetComponent<Button>().targetGraphic.raycastTarget = false;
+    }
+
     public void MoveRight()
     {
         MoveTo(new Vector2(center.x + (screenSizeOffset ? Screen.width : offset.x), center.y));
