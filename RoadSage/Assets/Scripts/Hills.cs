@@ -23,6 +23,7 @@ public class Hills : MonoBehaviour {
     public void Restart()
     {
         transform.position = new Vector3(11.59f, -10.36f, -2);
+        pause = true;
     }
 
     // Update is called once per frame

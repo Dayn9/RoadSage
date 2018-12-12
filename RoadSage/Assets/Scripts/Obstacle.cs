@@ -9,8 +9,6 @@ public class Obstacle : MonoBehaviour {
     [SerializeField] private Hills hillManager;
     [SerializeField] private UIElement gameOver;
     [SerializeField] private UIElement gameOverScore;
-    [SerializeField] private UIElement levelSelectIcon;
-    [SerializeField] private UIElement pauseIcon;
     [SerializeField] private UIElement tapToStart;
 
     private static int highscore = 0;
@@ -26,13 +24,17 @@ public class Obstacle : MonoBehaviour {
             gameOverScore.MoveCenter();
             if((int)car.score > highscore) { highscore = (int)car.score; }
             gameOverScore.GetComponent<Text>().text = "Score: " + (int)car.score + "\n Highscore: "  + highscore;
-            levelSelectIcon.MoveLeft();
-            pauseIcon.MoveRight();
             tapToStart.Activate();
             tapToStart.FadeIn();
 
             car.Restart();
-            GetComponentInParent<Hills>().Restart();
+            List<Hills> hills = new List<Hills>();
+
+            hills.AddRange(FindObjectsOfType<Hills>());
+            foreach(Hills hill in hills)
+            {
+                hill.Restart();
+            }
         }
     }
 }

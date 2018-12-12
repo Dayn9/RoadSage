@@ -55,6 +55,8 @@ public class Car : MonoBehaviour {
     public void Restart()
     {
         transform.position = new Vector3(-3.16f, 0, 0);
+        pause = true;
+        score = 0;
     }
 
 

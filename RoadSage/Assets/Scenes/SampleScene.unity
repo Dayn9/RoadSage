@@ -566,6 +566,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 244477456}
+        m_MethodName: MoveTop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 244477456}
+        m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1431584989}
+        m_MethodName: MoveBottom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1431584989}
+        m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &179426366
@@ -2618,8 +2662,6 @@ MonoBehaviour:
   hillManager: {fileID: 522509138}
   gameOver: {fileID: 244477456}
   gameOverScore: {fileID: 1431584989}
-  levelSelectIcon: {fileID: 570994134}
-  pauseIcon: {fileID: 2120375121}
   tapToStart: {fileID: 179426364}
 --- !u!1 &1195856804
 GameObject:
@@ -3267,8 +3309,6 @@ MonoBehaviour:
   hillManager: {fileID: 522509138}
   gameOver: {fileID: 244477456}
   gameOverScore: {fileID: 1431584989}
-  levelSelectIcon: {fileID: 570994134}
-  pauseIcon: {fileID: 2120375121}
   tapToStart: {fileID: 179426364}
 --- !u!1 &1431584987
 GameObject:

@@ -68,7 +68,7 @@ public class UIElement : MonoBehaviour {
     }
     public void Activate()
     {
-        GetComponent<Button>().targetGraphic.raycastTarget = false;
+        GetComponent<Button>().targetGraphic.raycastTarget = true;
     }
 
     public void MoveRight()
