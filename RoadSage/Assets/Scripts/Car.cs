@@ -57,6 +57,7 @@ public class Car : MonoBehaviour {
         transform.position = new Vector3(-3.16f, 0, 0);
         pause = true;
         score = 0;
+        transform.right = Vector2.right;
     }
 
 
